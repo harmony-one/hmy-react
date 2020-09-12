@@ -1,9 +1,9 @@
 import { ConnectorUpdate } from '@hmy-react/types'
 import { AbstractConnector } from '@hmy-react/abstract-connector'
-import HmyProviderEngine from 'hmy-provider-engine'
-import { ledgerHarmonyBrowserClientFactoryAsync } from '@0x/subproviders/lib/src' // https://github.com/0xProject/0x-monorepo/issues/1400
+import Web3ProviderEngine from 'web3-provider-engine'
+import { ledgerEthereumBrowserClientFactoryAsync } from '@0x/subproviders/lib/src' // https://github.com/0xProject/0x-monorepo/issues/1400
 import { LedgerSubprovider } from '@0x/subproviders/lib/src/subproviders/ledger' // https://github.com/0xProject/0x-monorepo/issues/1400
-import CacheSubprovider from 'hmy-provider-engine/subproviders/cache.js'
+import CacheSubprovider from 'web3-provider-engine/subproviders/cache.js'
 import { RPCSubprovider } from '@0x/subproviders/lib/src/subproviders/rpc_subprovider' // https://github.com/0xProject/0x-monorepo/issues/1400
 
 interface LedgerConnectorArguments {
@@ -16,67 +16,67 @@ interface LedgerConnectorArguments {
 }
 
 export class LedgerConnector extends AbstractConnector {
-  private readonly chainId: number
-  private readonly url: string
-  private readonly pollingInterval?: number
-  private readonly requestTimeoutMs?: number
-  private readonly accountFetchingConfigs?: any
-  private readonly baseDerivationPath?: string
+         private readonly chainId: number
+         private readonly url: string
+         private readonly pollingInterval?: number
+         private readonly requestTimeoutMs?: number
+         private readonly accountFetchingConfigs?: any
+         private readonly baseDerivationPath?: string
 
-  private provider: any
+         private provider: any
 
-  constructor({
-    chainId,
-    url,
-    pollingInterval,
-    requestTimeoutMs,
-    accountFetchingConfigs,
-    baseDerivationPath
-  }: LedgerConnectorArguments) {
-    super({ supportedChainIds: [chainId] })
+         constructor({
+           chainId,
+           url,
+           pollingInterval,
+           requestTimeoutMs,
+           accountFetchingConfigs,
+           baseDerivationPath
+         }: LedgerConnectorArguments) {
+           super({ supportedChainIds: [chainId] })
 
-    this.chainId = chainId
-    this.url = url
-    this.pollingInterval = pollingInterval
-    this.requestTimeoutMs = requestTimeoutMs
-    this.accountFetchingConfigs = accountFetchingConfigs
-    this.baseDerivationPath = baseDerivationPath
-  }
+           this.chainId = chainId
+           this.url = url
+           this.pollingInterval = pollingInterval
+           this.requestTimeoutMs = requestTimeoutMs
+           this.accountFetchingConfigs = accountFetchingConfigs
+           this.baseDerivationPath = baseDerivationPath
+         }
 
-  public async activate(): Promise<ConnectorUpdate> {
-    if (!this.provider) {
-      const engine = new HmyProviderEngine({ pollingInterval: this.pollingInterval })
-      engine.addProvider(
-        new LedgerSubprovider({
-          networkId: this.chainId,
-          ledgerHarmonyClientFactoryAsync: ledgerHarmonyBrowserClientFactoryAsync,
-          accountFetchingConfigs: this.accountFetchingConfigs,
-          baseDerivationPath: this.baseDerivationPath
-        })
-      )
-      engine.addProvider(new CacheSubprovider())
-      engine.addProvider(new RPCSubprovider(this.url, this.requestTimeoutMs))
-      this.provider = engine
-    }
+         public async activate(): Promise<ConnectorUpdate> {
+           if (!this.provider) {
+             const engine = new Web3ProviderEngine({ pollingInterval: this.pollingInterval })
+             engine.addProvider(
+               new LedgerSubprovider({
+                 networkId: this.chainId,
+                 ledgerEthereumClientFactoryAsync: ledgerEthereumBrowserClientFactoryAsync,
+                 accountFetchingConfigs: this.accountFetchingConfigs,
+                 baseDerivationPath: this.baseDerivationPath
+               })
+             )
+             engine.addProvider(new CacheSubprovider())
+             engine.addProvider(new RPCSubprovider(this.url, this.requestTimeoutMs))
+             this.provider = engine
+           }
 
-    this.provider.start()
+           this.provider.start()
 
-    return { provider: this.provider, chainId: this.chainId }
-  }
+           return { provider: this.provider, chainId: this.chainId }
+         }
 
-  public async getProvider(): Promise<HmyProviderEngine> {
-    return this.provider
-  }
+         public async getProvider(): Promise<Web3ProviderEngine> {
+           return this.provider
+         }
 
-  public async getChainId(): Promise<number> {
-    return this.chainId
-  }
+         public async getChainId(): Promise<number> {
+           return this.chainId
+         }
 
-  public async getAccount(): Promise<null> {
-    return this.provider._providers[0].getAccountsAsync(1).then((accounts: string[]): string => accounts[0])
-  }
+         public async getAccount(): Promise<null> {
+           return this.provider._providers[0].getAccountsAsync(1).then((accounts: string[]): string => accounts[0])
+         }
 
-  public deactivate() {
-    this.provider.stop()
-  }
-}
+         public deactivate() {
+           this.provider.stop()
+         }
+       }
