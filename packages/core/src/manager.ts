@@ -1,9 +1,9 @@
 import { useReducer, useEffect, useCallback, useRef } from 'react'
-import { ConnectorUpdate, ConnectorEvent } from '@web3-react/types'
-import { AbstractConnector } from '@web3-react/abstract-connector'
+import { ConnectorUpdate, ConnectorEvent } from '@hmy-react/types'
+import { AbstractConnector } from '@hmy-react/abstract-connector'
 import warning from 'tiny-warning'
 
-import { Web3ReactManagerReturn } from './types'
+import { HmyReactManagerReturn } from './types'
 import { normalizeChainId, normalizeAccount } from './normalizers'
 
 class StaleConnectorError extends Error {
@@ -21,7 +21,7 @@ export class UnsupportedChainIdError extends Error {
   }
 }
 
-interface Web3ReactManagerState {
+interface HmyReactManagerState {
   connector?: AbstractConnector
   provider?: any
   chainId?: number
@@ -46,7 +46,7 @@ interface Action {
   payload?: any
 }
 
-function reducer(state: Web3ReactManagerState, { type, payload }: Action): Web3ReactManagerState {
+function reducer(state: HmyReactManagerState, { type, payload }: Action): HmyReactManagerState {
   switch (type) {
     case ActionType.ACTIVATE_CONNECTOR: {
       const { connector, provider, chainId, account, onError } = payload
@@ -112,7 +112,7 @@ async function augmentConnectorUpdate(
   return { provider, chainId, account }
 }
 
-export function useWeb3ReactManager(): Web3ReactManagerReturn {
+export function useHmyReactManager(): HmyReactManagerReturn {
   const [state, dispatch] = useReducer(reducer, {})
   const { connector, provider, chainId, account, onError, error } = state
 

@@ -1,18 +1,18 @@
 {
-  "name": "@web3-react/abstract-connector",
+  "name": "@hmy-react/abstract-connector",
   "publishConfig": {
     "access": "public"
   },
   "version": "6.0.7",
-  "description": "A simple, maximally extensible, dependency minimized framework for building modern Ethereum dApps",
+  "description": "A simple, maximally extensible, dependency minimized framework for building modern Harmony dApps",
   "keywords": [
     "react",
     "react-hooks",
     "hooks",
-    "ethereum",
+    "harmony",
     "javascript",
     "typescript",
-    "web3",
+    "hmy",
     "context",
     "frontend",
     "dapp"
@@ -20,7 +20,7 @@
   "author": "Noah Zinsmeister <noahwz@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/NoahZinsmeister/web3-react.git"
+    "url": "git://github.com/harmony-one/hmy-react.git"
   },
   "main": "dist/index.js",
   "module": "dist/abstract-connector.esm.js",
@@ -34,7 +34,7 @@
     "lint": "tsdx lint src"
   },
   "dependencies": {
-    "@web3-react/types": "^6.0.7"
+    "@hmy-react/types": "^6.0.7"
   },
   "license": "GPL-3.0-or-later"
 }

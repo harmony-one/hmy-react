@@ -1,11 +1,11 @@
-# `web3-react` Documentation - Network
+# `hmy-react` Documentation - Network
 
 - [Install](#install)
 - [Arguments](#arguments)
 - [Example](#example)
 
 ## Install
-`yarn add @web3-react/network-connector`
+`yarn add @hmy-react/network-connector`
 
 ## Arguments
 ```typescript
@@ -17,7 +17,7 @@ requestTimeoutMs?: number
 
 ## Example
 ```javascript
-import { NetworkConnector } from '@web3-react/network-connector'
+import { NetworkConnector } from '@hmy-react/network-connector'
 
 const network = new NetworkConnector({ urls: { 1: RPC_URLS[1] } })
 ```

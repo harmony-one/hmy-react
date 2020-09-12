@@ -1,11 +1,11 @@
-# `web3-react` Documentation - Fortmatic
+# `hmy-react` Documentation - Fortmatic
 
 - [Install](#install)
 - [Arguments](#arguments)
 - [Example](#example)
 
 ## Install
-`yarn add @web3-react/fortmatic-connector`
+`yarn add @hmy-react/fortmatic-connector`
 
 ## Arguments
 ```typescript
@@ -15,7 +15,7 @@ chainId: number
 
 ## Example
 ```javascript
-import { FortmaticConnector } from '@web3-react/fortmatic-connector'
+import { FortmaticConnector } from '@hmy-react/fortmatic-connector'
 
 const fortmatic = new FortmaticConnector({ apiKey: '...', chainId: 4 })
 ```

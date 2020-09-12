@@ -1,13 +1,13 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import { Web3ReactProvider } from '../src'
+import { HmyReactProvider } from '../src'
 
 function App() {
   return (
-    <Web3ReactProvider getLibrary={() => {}}>
+    <HmyReactProvider getLibrary={() => {}}>
       <div>test!</div>
-    </Web3ReactProvider>
+    </HmyReactProvider>
   )
 }
 

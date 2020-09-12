@@ -1,33 +1,25 @@
 {
   "private": true,
-  "name": "web3-react",
-  "description": "A simple, maximally extensible, dependency minimized framework for building modern Ethereum dApps",
+  "name": "hmy-react",
+  "description": "A simple, maximally extensible, dependency minimized framework for building modern Harmony dApps",
   "keywords": [
     "react",
     "react-hooks",
     "hooks",
-    "ethereum",
+    "harmony",
     "javascript",
     "typescript",
-    "web3",
+    "hmy",
     "context",
     "frontend",
     "dapp",
-    "metamask",
-    "walletconnect",
-    "walletlink",
-    "frame",
-    "fortmatic",
-    "portis",
-    "squarelink",
-    "torus",
-    "authereum",
-    "magic"
+    "onewallet",
+    "fortmatic"
   ],
   "author": "Noah Zinsmeister <noahwz@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/NoahZinsmeister/web3-react.git"
+    "url": "git://github.com/harmony-one/hmy-react.git"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",

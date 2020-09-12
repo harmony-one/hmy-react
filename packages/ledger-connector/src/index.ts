@@ -1,9 +1,9 @@
-import { ConnectorUpdate } from '@web3-react/types'
-import { AbstractConnector } from '@web3-react/abstract-connector'
-import Web3ProviderEngine from 'web3-provider-engine'
-import { ledgerEthereumBrowserClientFactoryAsync } from '@0x/subproviders/lib/src' // https://github.com/0xProject/0x-monorepo/issues/1400
+import { ConnectorUpdate } from '@hmy-react/types'
+import { AbstractConnector } from '@hmy-react/abstract-connector'
+import HmyProviderEngine from 'hmy-provider-engine'
+import { ledgerHarmonyBrowserClientFactoryAsync } from '@0x/subproviders/lib/src' // https://github.com/0xProject/0x-monorepo/issues/1400
 import { LedgerSubprovider } from '@0x/subproviders/lib/src/subproviders/ledger' // https://github.com/0xProject/0x-monorepo/issues/1400
-import CacheSubprovider from 'web3-provider-engine/subproviders/cache.js'
+import CacheSubprovider from 'hmy-provider-engine/subproviders/cache.js'
 import { RPCSubprovider } from '@0x/subproviders/lib/src/subproviders/rpc_subprovider' // https://github.com/0xProject/0x-monorepo/issues/1400
 
 interface LedgerConnectorArguments {
@@ -45,11 +45,11 @@ export class LedgerConnector extends AbstractConnector {
 
   public async activate(): Promise<ConnectorUpdate> {
     if (!this.provider) {
-      const engine = new Web3ProviderEngine({ pollingInterval: this.pollingInterval })
+      const engine = new HmyProviderEngine({ pollingInterval: this.pollingInterval })
       engine.addProvider(
         new LedgerSubprovider({
           networkId: this.chainId,
-          ledgerEthereumClientFactoryAsync: ledgerEthereumBrowserClientFactoryAsync,
+          ledgerHarmonyClientFactoryAsync: ledgerHarmonyBrowserClientFactoryAsync,
           accountFetchingConfigs: this.accountFetchingConfigs,
           baseDerivationPath: this.baseDerivationPath
         })
@@ -64,7 +64,7 @@ export class LedgerConnector extends AbstractConnector {
     return { provider: this.provider, chainId: this.chainId }
   }
 
-  public async getProvider(): Promise<Web3ProviderEngine> {
+  public async getProvider(): Promise<HmyProviderEngine> {
     return this.provider
   }
 
