@@ -1,8 +1,8 @@
-import { ConnectorUpdate } from '@web3-react/types'
-import { AbstractConnector } from '@web3-react/abstract-connector'
+import { ConnectorUpdate } from '@hmy-react/types'
+import { AbstractConnector } from '@hmy-react/abstract-connector'
 import invariant from 'tiny-invariant'
 
-// taken from ethers.js, compatible interface with web3 provider
+// taken from harmony-one.js, compatible interface with hmy provider
 type AsyncSendable = {
   isMetaMask?: boolean
   host?: string

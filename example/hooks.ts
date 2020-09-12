@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useWeb3React } from '@web3-react/core'
+import { useHmyReact } from '@hmy-react/core'
 
 import { injected } from './connectors'
 
 export function useEagerConnect() {
-  const { activate, active } = useWeb3React()
+  const { activate, active } = useHmyReact()
 
   const [tried, setTried] = useState(false)
 
@@ -31,11 +31,11 @@ export function useEagerConnect() {
 }
 
 export function useInactiveListener(suppress: boolean = false) {
-  const { active, error, activate } = useWeb3React()
+  const { active, error, activate } = useHmyReact()
 
   useEffect((): any => {
-    const { ethereum } = window as any
-    if (ethereum && ethereum.on && !active && !error && !suppress) {
+    const { harmony } = window as any
+    if (harmony && harmony.on && !active && !error && !suppress) {
       const handleConnect = () => {
         console.log("Handling 'connect' event")
         activate(injected)
@@ -55,17 +55,17 @@ export function useInactiveListener(suppress: boolean = false) {
         activate(injected)
       }
 
-      ethereum.on('connect', handleConnect)
-      ethereum.on('chainChanged', handleChainChanged)
-      ethereum.on('accountsChanged', handleAccountsChanged)
-      ethereum.on('networkChanged', handleNetworkChanged)
+      harmony.on('connect', handleConnect)
+      harmony.on('chainChanged', handleChainChanged)
+      harmony.on('accountsChanged', handleAccountsChanged)
+      harmony.on('networkChanged', handleNetworkChanged)
 
       return () => {
-        if (ethereum.removeListener) {
-          ethereum.removeListener('connect', handleConnect)
-          ethereum.removeListener('chainChanged', handleChainChanged)
-          ethereum.removeListener('accountsChanged', handleAccountsChanged)
-          ethereum.removeListener('networkChanged', handleNetworkChanged)
+        if (harmony.removeListener) {
+          harmony.removeListener('connect', handleConnect)
+          harmony.removeListener('chainChanged', handleChainChanged)
+          harmony.removeListener('accountsChanged', handleAccountsChanged)
+          harmony.removeListener('networkChanged', handleNetworkChanged)
         }
       }
     }

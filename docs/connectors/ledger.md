@@ -1,11 +1,11 @@
-# `web3-react` Documentation - Ledger
+# `hmy-react` Documentation - Ledger
 
 - [Install](#install)
 - [Arguments](#arguments)
 - [Example](#example)
 
 ## Install
-`yarn add @web3-react/ledger-connector`
+`yarn add @hmy-react/ledger-connector`
 
 ## Arguments
 ```typescript
@@ -19,7 +19,7 @@ baseDerivationPath?: string
 
 ## Example
 ```javascript
-import { LedgerConnector } from '@web3-react/ledger-connector'
+import { LedgerConnector } from '@hmy-react/ledger-connector'
 
 const ledger = new LedgerConnector({ chainId: 1, url: '...' })
 ```

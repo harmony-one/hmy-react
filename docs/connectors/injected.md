@@ -1,16 +1,16 @@
-# `web3-react` Documentation - Injected
+# `hmy-react` Documentation - Injected
 
 - [Install](#install)
 - [Arguments](#arguments)
 - [Example](#example)
 - [Errors](#errors)
-  - [NoEthereumProviderError](#noethereumprovidererror)
+  - [NoHarmonyProviderError](#noharmonyprovidererror)
     - [Example](#example-1)
   - [UserRejectedRequestError](#userrejectedrequesterror)
     - [Example](#example-2)
 
 ## Install
-`yarn add @web3-react/injected-connector`
+`yarn add @hmy-react/injected-connector`
 
 ## Arguments
 ```typescript
@@ -19,22 +19,22 @@ supportedChainIds?: number[]
 
 ## Example
 ```javascript
-import { InjectedConnector } from '@web3-react/injected-connector'
+import { InjectedConnector } from '@hmy-react/injected-connector'
 
-const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] })
+const injected = new InjectedConnector({ supportedChainIds: [1, 2] })
 ```
 
 ## Errors
 
-### NoEthereumProviderError
+### NoHarmonyProviderError
 
 #### Example
 ```javascript
-import { NoEthereumProviderError } from '@web3-react/injected-connector'
+import { NoHarmonyProviderError } from '@hmy-react/injected-connector'
 
 function Component () {
-  const { error } = useWeb3React()
-  const isNoEthereumProviderError = error instanceof NoEthereumProviderError
+  const { error } = useHmyReact()
+  const isNoHarmonyProviderError = error instanceof NoHarmonyProviderError
   // ...
 }
 ```
@@ -43,10 +43,10 @@ function Component () {
 
 #### Example
 ```javascript
-import { UserRejectedRequestError } from '@web3-react/injected-connector'
+import { UserRejectedRequestError } from '@hmy-react/injected-connector'
 
 function Component () {
-  const { error } = useWeb3React()
+  const { error } = useHmyReact()
   const isUserRejectedRequestError = error instanceof UserRejectedRequestError
   // ...
 }

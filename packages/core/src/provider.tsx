@@ -1,37 +1,37 @@
 import React, { createContext, useContext, useMemo } from 'react'
 import invariant from 'tiny-invariant'
 
-import { Web3ReactContextInterface } from './types'
-import { useWeb3ReactManager } from './manager'
+import { HmyReactContextInterface } from './types'
+import { useHmyReactManager } from './manager'
 
 export const PRIMARY_KEY = 'primary'
-const CONTEXTS: { [key: string]: React.Context<Web3ReactContextInterface> } = {}
+const CONTEXTS: { [key: string]: React.Context<HmyReactContextInterface> } = {}
 
-interface Web3ReactProviderArguments {
-  getLibrary: (provider?: any, connector?: Required<Web3ReactContextInterface>['connector']) => any
+interface HmyReactProviderArguments {
+  getLibrary: (provider?: any, connector?: Required<HmyReactContextInterface>['connector']) => any
   children: any
 }
 
-export function createWeb3ReactRoot(key: string): (args: Web3ReactProviderArguments) => JSX.Element {
+export function createHmyReactRoot(key: string): (args: HmyReactProviderArguments) => JSX.Element {
   invariant(!CONTEXTS[key], `A root already exists for provided key ${key}`)
 
-  CONTEXTS[key] = createContext<Web3ReactContextInterface>({
+  CONTEXTS[key] = createContext<HmyReactContextInterface>({
     activate: async () => {
-      invariant(false, 'No <Web3ReactProvider ... /> found.')
+      invariant(false, 'No <HmyReactProvider ... /> found.')
     },
     setError: () => {
-      invariant(false, 'No <Web3ReactProvider ... /> found.')
+      invariant(false, 'No <HmyReactProvider ... /> found.')
     },
     deactivate: () => {
-      invariant(false, 'No <Web3ReactProvider ... /> found.')
+      invariant(false, 'No <HmyReactProvider ... /> found.')
     },
     active: false
   })
-  CONTEXTS[key].displayName = `Web3ReactContext - ${key}`
+  CONTEXTS[key].displayName = `HmyReactContext - ${key}`
 
   const Provider = CONTEXTS[key].Provider
 
-  return function Web3ReactProvider({ getLibrary, children }: Web3ReactProviderArguments): JSX.Element {
+  return function HmyReactProvider({ getLibrary, children }: HmyReactProviderArguments): JSX.Element {
     const {
       connector,
       provider,
@@ -43,7 +43,7 @@ export function createWeb3ReactRoot(key: string): (args: Web3ReactProviderArgume
       deactivate,
 
       error
-    } = useWeb3ReactManager()
+    } = useHmyReactManager()
 
     const active = connector !== undefined && chainId !== undefined && account !== undefined && !!!error
     const library = useMemo(
@@ -54,7 +54,7 @@ export function createWeb3ReactRoot(key: string): (args: Web3ReactProviderArgume
       [active, getLibrary, provider, connector, chainId]
     )
 
-    const web3ReactContext: Web3ReactContextInterface = {
+    const hmyReactContext: HmyReactContextInterface = {
       connector,
       library,
       chainId,
@@ -68,17 +68,17 @@ export function createWeb3ReactRoot(key: string): (args: Web3ReactProviderArgume
       error
     }
 
-    return <Provider value={web3ReactContext}>{children}</Provider>
+    return <Provider value={hmyReactContext}>{children}</Provider>
   }
 }
 
-export const Web3ReactProvider = createWeb3ReactRoot(PRIMARY_KEY)
+export const HmyReactProvider = createHmyReactRoot(PRIMARY_KEY)
 
-export function getWeb3ReactContext<T = any>(key: string = PRIMARY_KEY): React.Context<Web3ReactContextInterface<T>> {
+export function getHmyReactContext<T = any>(key: string = PRIMARY_KEY): React.Context<HmyReactContextInterface<T>> {
   invariant(Object.keys(CONTEXTS).includes(key), `Invalid key ${key}`)
   return CONTEXTS[key]
 }
 
-export function useWeb3React<T = any>(key?: string): Web3ReactContextInterface<T> {
-  return useContext(getWeb3ReactContext(key))
+export function useHmyReact<T = any>(key?: string): HmyReactContextInterface<T> {
+  return useContext(getHmyReactContext(key))
 }

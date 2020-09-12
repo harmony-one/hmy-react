@@ -1,12 +1,12 @@
-import { AbstractConnector } from '@web3-react/abstract-connector'
+import { AbstractConnector } from '@hmy-react/abstract-connector'
 
-export interface Web3ReactManagerFunctions {
+export interface HmyReactManagerFunctions {
   activate: (connector: AbstractConnector, onError?: (error: Error) => void, throwErrors?: boolean) => Promise<void>
   setError: (error: Error) => void
   deactivate: () => void
 }
 
-export interface Web3ReactManagerReturn extends Web3ReactManagerFunctions {
+export interface HmyReactManagerReturn extends HmyReactManagerFunctions {
   connector?: AbstractConnector
   provider?: any
   chainId?: number
@@ -15,7 +15,7 @@ export interface Web3ReactManagerReturn extends Web3ReactManagerFunctions {
   error?: Error
 }
 
-export interface Web3ReactContextInterface<T = any> extends Web3ReactManagerFunctions {
+export interface HmyReactContextInterface<T = any> extends HmyReactManagerFunctions {
   connector?: AbstractConnector
   library?: T
   chainId?: number

@@ -1,18 +1,18 @@
 {
-  "name": "@web3-react/types",
+  "name": "@hmy-react/types",
   "publishConfig": {
     "access": "public"
   },
   "version": "6.0.7",
-  "description": "A simple, maximally extensible, dependency minimized framework for building modern Ethereum dApps",
+  "description": "A simple, maximally extensible, dependency minimized framework for building modern Harmony dApps",
   "keywords": [
     "react",
     "react-hooks",
     "hooks",
-    "ethereum",
+    "harmony",
     "javascript",
     "typescript",
-    "web3",
+    "hmy",
     "context",
     "frontend",
     "dapp"
@@ -20,7 +20,7 @@
   "author": "Noah Zinsmeister <noahwz@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/NoahZinsmeister/web3-react.git"
+    "url": "git://github.com/harmony-one/hmy-react.git"
   },
   "main": "dist/index.js",
   "module": "dist/types.esm.js",

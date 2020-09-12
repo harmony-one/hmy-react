@@ -1,12 +1,10 @@
-import { ConnectorUpdate } from '@web3-react/types'
-import { AbstractConnector } from '@web3-react/abstract-connector'
+import { ConnectorUpdate } from '@hmy-react/types'
+import { AbstractConnector } from '@hmy-react/abstract-connector'
 import invariant from 'tiny-invariant'
 
 const chainIdToNetwork: { [network: number]: string } = {
   1: 'mainnet',
-  3: 'ropsten',
-  4: 'rinkeby',
-  42: 'kovan'
+  2: 'testnet'
 }
 
 interface FortmaticConnectorArguments {
