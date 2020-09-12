@@ -1,11 +1,9 @@
 # `hmy-react` 🧰
 
-_A simple, maximally extensible, dependency minimized framework for building modern [Ethereum dApps](https://ethereum.org/beginners/)_
+_A simple, maximally extensible, dependency minimized framework for building modern [Harmony dApps](https://docs.harmony.one/home/developers)_
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-[![Actions Status](https://github.com/harmony-one/hmy-react/workflows/CI/badge.svg)](https://github.com/harmony-one/hmy-react/actions)
 
 | Packages                              | `@latest` Version                                                                                                                                                         | Size                                                                                                                                                                                 | Description                                                                         |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
