@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@hmy-react/abstract-connector@^6.1.7-alpha.0":
+  version "6.1.7-alpha.0"
+  resolved "https://registry.yarnpkg.com/@hmy-react/abstract-connector/-/abstract-connector-6.1.7-alpha.0.tgz#c870fffa6eb9314e076355f46abc10bdee46f7ee"
+  integrity sha512-wD25UH8RnLWaSaiHEld9VHXvlSW9VuWu8L3rHkfGOzzD1rkT57cr0Lw7tbGd98aXi0KX9LxaZl7OF4W6/GfBaQ==
+  dependencies:
+    "@hmy-react/types" "^6.1.7-alpha.0"
+
+"@hmy-react/types@^6.1.7-alpha.0":
+  version "6.1.7-alpha.0"
+  resolved "https://registry.yarnpkg.com/@hmy-react/types/-/types-6.1.7-alpha.0.tgz#ee1f0177a2313f7b49231218860999d2b5f254f4"
+  integrity sha512-eFA/PoJSQbIXQ7TqVgqtFtBTscTsbrqzs1rOC81fDLd81z/OuySiwfwUbQh4BktcQTpXnwduaeAcub6pnOqDwg==
+
 tiny-warning@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
