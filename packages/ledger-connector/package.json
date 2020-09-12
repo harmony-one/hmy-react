@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "6.1.1",
+  "version": "6.1.7-alpha.0",
   "description": "A simple, maximally extensible, dependency minimized framework for building modern Harmony dApps",
   "keywords": [
     "react",
@@ -36,8 +36,8 @@
   },
   "dependencies": {
     "@0x/subproviders": "^5.0.4",
-    "@hmy-react/abstract-connector": "^6.0.7",
-    "@hmy-react/types": "^6.0.7"
+    "@hmy-react/abstract-connector": "^6.1.7-alpha.0",
+    "@hmy-react/types": "^6.1.7-alpha.0"
   },
   "license": "GPL-3.0-or-later"
 }
