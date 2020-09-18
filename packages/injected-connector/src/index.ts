@@ -82,17 +82,17 @@ export class InjectedConnector extends AbstractConnector {
       ;(window.harmony as any).autoRefreshOnNetworkChange = false
     }
 
-    // try to activate + get account via eth_requestAccounts
+    // try to activate + get account via hmyv2_requestAccounts
     let account
     try {
-      account = await (window.harmony.send as Send)('eth_requestAccounts').then(
+      account = await (window.harmony.send as Send)('hmyv2_requestAccounts').then(
         sendReturn => parseSendReturn(sendReturn)[0]
       )
     } catch (error) {
       if ((error as any).code === 4001) {
         throw new UserRejectedRequestError()
       }
-      warning(false, 'eth_requestAccounts was unsuccessful, falling back to enable')
+      warning(false, 'hmyv2_requestAccounts was unsuccessful, falling back to enable')
     }
 
     // if unsuccessful, try enable
@@ -115,9 +115,9 @@ export class InjectedConnector extends AbstractConnector {
 
     let chainId
     try {
-      chainId = await (window.harmony.send as Send)('eth_chainId').then(parseSendReturn)
+      chainId = await (window.harmony.send as Send)('hmyv2_chainId').then(parseSendReturn)
     } catch {
-      warning(false, 'eth_chainId was unsuccessful, falling back to net_version')
+      warning(false, 'hmyv2_chainId was unsuccessful, falling back to net_version')
     }
 
     if (!chainId) {
@@ -158,21 +158,21 @@ export class InjectedConnector extends AbstractConnector {
 
     let account
     try {
-      account = await (window.harmony.send as Send)('eth_accounts').then(sendReturn => parseSendReturn(sendReturn)[0])
+      account = await (window.harmony.send as Send)('hmyv2_accounts').then(sendReturn => parseSendReturn(sendReturn)[0])
     } catch {
-      warning(false, 'eth_accounts was unsuccessful, falling back to enable')
+      warning(false, 'hmyv2_accounts was unsuccessful, falling back to enable')
     }
 
     if (!account) {
       try {
         account = await window.harmony.enable().then(sendReturn => parseSendReturn(sendReturn)[0])
       } catch {
-        warning(false, 'enable was unsuccessful, falling back to eth_accounts v2')
+        warning(false, 'enable was unsuccessful, falling back to hmyv2_accounts v2')
       }
     }
 
     if (!account) {
-      account = parseSendReturn((window.harmony.send as SendOld)({ method: 'eth_accounts' }))[0]
+      account = parseSendReturn((window.harmony.send as SendOld)({ method: 'hmyv2_accounts' }))[0]
     }
 
     return account
@@ -193,7 +193,7 @@ export class InjectedConnector extends AbstractConnector {
     }
 
     try {
-      return await (window.harmony.send as Send)('eth_accounts').then(sendReturn => {
+      return await (window.harmony.send as Send)('hmyv2_accounts').then(sendReturn => {
         if (parseSendReturn(sendReturn).length > 0) {
           return true
         } else {

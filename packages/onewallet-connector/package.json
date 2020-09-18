@@ -1,0 +1,43 @@
+{
+  "name": "@web3-react/authereum-connector",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "6.1.6",
+  "description": "A simple, maximally extensible, dependency minimized framework for building modern Ethereum dApps",
+  "keywords": [
+    "react",
+    "react-hooks",
+    "hooks",
+    "ethereum",
+    "javascript",
+    "typescript",
+    "hmy",
+    "context",
+    "frontend",
+    "dapp",
+    "onewallet"
+  ],
+  "author": "Jong Hyuck Won <jhwon0820@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/harmony-one/hmy-react.git"
+  },
+  "main": "dist/index.js",
+  "module": "dist/one-connector.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "lint": "tsdx lint src"
+  },
+  "dependencies": {
+    "@harmony-js/core": "^0.1.54",
+    "@web3-react/abstract-connector": "latest",
+    "@web3-react/types": "latest"
+  },
+  "license": "GPL-3.0-or-later"
+}

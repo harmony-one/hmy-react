@@ -69,7 +69,7 @@ import { HmyReactProvider } from '@hmy-react/core'
 // import your favorite hmy convenience library here
 
 function getLibrary(provider, connector) {
-  return new HmyProvider(provider) // this will vary according to whether you use e.g. harmony-one or harmony-js
+  return new Web3Provider(provider) // this will vary according to whether you use e.g. harmony-one or harmony-js
 }
 
 function App () {
@@ -119,7 +119,7 @@ import { HmyReactProvider, createHmyReactRoot } from '@hmy-react/core'
 // import your favorite hmy convenience library here
 
 function getLibrary(provider) {
-  return new HmyProvider(provider) // this will vary according to whether you use e.g. harmony-one or harmony-js
+  return new Web3Provider(provider) // this will vary according to whether you use e.g. harmony-one or harmony-js
 }
 
 const HmyReactProviderReloaded = createHmyReactRoot('anotherOne')

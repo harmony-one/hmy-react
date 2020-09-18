@@ -4,8 +4,8 @@ import {
   NoHarmonyProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected
 } from '@hmy-react/injected-connector'
-import { HmyProvider } from '@ethersproject/providers'
-import { formatOne } from '@ethersproject/units'
+import { Web3Provider } from '@ethersproject/providers'
+import { formatEther } from '@ethersproject/units'
 
 import { useEagerConnect, useInactiveListener } from '../hooks'
 import {
@@ -45,8 +45,8 @@ function getErrorMessage(error: Error) {
   }
 }
 
-function getLibrary(provider: any): HmyProvider {
-  const library = new HmyProvider(provider)
+function getLibrary(provider: any): Web3Provider {
+  const library = new Web3Provider(provider)
   library.pollingInterval = 12000
   return library
 }
@@ -172,7 +172,7 @@ function Balance() {
       <span role="img" aria-label="gold">
         💰
       </span>
-      <span>{balance === null ? 'Error' : balance ? `Ξ${formatOne(balance)}` : ''}</span>
+      <span>{balance === null ? 'Error' : balance ? `Ξ${formatEther(balance)}` : ''}</span>
     </>
   )
 }
@@ -203,7 +203,7 @@ function Header() {
 }
 
 function App() {
-  const context = useHmyReact<HmyProvider>()
+  const context = useHmyReact<Web3Provider>()
   const { connector, library, chainId, account, activate, deactivate, active, error } = context
 
   // handle logic to recognize the connector currently being activated
